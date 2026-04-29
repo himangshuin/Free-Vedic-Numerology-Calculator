@@ -704,6 +704,75 @@ body::before {
   50% { opacity: 1; }
 }
 
+/* ─── GRID NAVIGATOR ─── */
+.grid-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: rgba(201,151,58,0.05);
+  border: 1px solid rgba(201,151,58,0.2);
+  border-radius: 1rem;
+  padding: 0.9rem 1.4rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  background: rgba(201,151,58,0.1);
+  border: 1px solid rgba(201,151,58,0.3);
+  border-radius: 0.6rem;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  background: rgba(201,151,58,0.2);
+  border-color: var(--gold);
+  box-shadow: 0 0 14px rgba(201,151,58,0.2);
+  transform: translateY(-1px);
+}
+
+.nav-btn:active { transform: translateY(0); }
+
+.nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.nav-range {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.nav-jump-now {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: rgba(240,201,106,0.5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  letter-spacing: 0.05em;
+}
+
+.nav-jump-now:hover { color: var(--gold); }
+
 /* ─── SCROLL BAR ─── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: rgba(201,151,58,0.05); }
@@ -863,6 +932,17 @@ body::before {
         <div class="legend-item"><div class="legend-dot base"></div><span>Birth digits</span></div>
       </div>
     </div>
+
+    <!-- Navigator -->
+    <div class="grid-nav">
+      <button class="nav-btn" id="navPrev">← Prev 20</button>
+      <div class="nav-center">
+        <div class="nav-range" id="navRange">— — —</div>
+        <button class="nav-jump-now" id="navJumpNow">Jump to Now</button>
+      </div>
+      <button class="nav-btn" id="navNext">Next 20 →</button>
+    </div>
+
     <div class="twenty-grids" id="twentyGrids"></div>
   </div>
 
@@ -1091,13 +1171,17 @@ function renderAntardasha() {
   }
 }
 
-function renderTwentyGrids() {
+let GRID_START_YEAR = null; // set on first compute
+
+function renderTwentyGrids(startYear) {
   const today = new Date();
   const currentYear = today.getFullYear();
-  const startYear = currentYear - 10;
   const container = document.getElementById('twentyGrids');
   container.innerHTML = '';
-  
+
+  // Update nav range label
+  document.getElementById('navRange').textContent = `${startYear} – ${startYear + 19}`;
+
   const freq = baseFreq(DOB, ROOT, DESTINY);
 
   for (let yr = startYear; yr < startYear + 20; yr++) {
@@ -1172,7 +1256,11 @@ function renderTwentyGrids() {
 // ────────────────────────────────────────────
 // MAIN
 // ────────────────────────────────────────────
-function compute(dobStr) {
+function defaultGridStart() {
+  return new Date().getFullYear() - 10;
+}
+
+function compute(dobStr, preserveGridPos) {
   DOB = new Date(dobStr);
   if (isNaN(DOB.getTime())) return;
   const day = DOB.getDate(), month = DOB.getMonth()+1, year = DOB.getFullYear();
@@ -1180,11 +1268,13 @@ function compute(dobStr) {
   DESTINY = destinyNum(day, month, year);
   MAHA_SEQ = getMahadashaSeq(ROOT, DOB, 100);
 
+  if (!preserveGridPos) GRID_START_YEAR = defaultGridStart();
+
   renderNumbers();
   renderGrid();
   renderMahadasha();
   renderAntardasha();
-  renderTwentyGrids();
+  renderTwentyGrids(GRID_START_YEAR);
 }
 
 // Tabs
@@ -1197,16 +1287,34 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// Grid nav buttons
+document.getElementById('navPrev').addEventListener('click', () => {
+  GRID_START_YEAR -= 20;
+  renderTwentyGrids(GRID_START_YEAR);
+  document.getElementById('twentyGrids').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('navNext').addEventListener('click', () => {
+  GRID_START_YEAR += 20;
+  renderTwentyGrids(GRID_START_YEAR);
+  document.getElementById('twentyGrids').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('navJumpNow').addEventListener('click', () => {
+  GRID_START_YEAR = defaultGridStart();
+  renderTwentyGrids(GRID_START_YEAR);
+});
+
 // Events
 document.getElementById('calculateBtn').addEventListener('click', () => {
   const v = document.getElementById('dobInput').value;
-  if (v) compute(v);
+  if (v) compute(v, false);
 });
 
-document.getElementById('dobInput').addEventListener('change', e => compute(e.target.value));
+document.getElementById('dobInput').addEventListener('change', e => compute(e.target.value, false));
 
 window.addEventListener('DOMContentLoaded', () => {
-  compute(document.getElementById('dobInput').value || '1950-09-17');
+  compute(document.getElementById('dobInput').value || '1950-09-17', false);
 });
 </script>
 </body>
