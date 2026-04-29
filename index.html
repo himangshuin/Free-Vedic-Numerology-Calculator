@@ -3,35 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="description" content="Free Vedic Numerology Calculator: Generate your Vedic grid, Moolank, Bhagyank, Mahadasha &amp; Antardasha instantly. Ancient Indian numerology based on date of birth.">
-  <meta name="keywords" content="Vedic numerology, numerology calculator, moolank, bhagyank, mahadasha calculator, antardasha, vedic grid, free numerology">
+  <meta name="description" content="Complete Vedic Numerology Suite: Full Chart, Mahadasha, Antardasha & 20-Year Grid Forecast. Ancient Indian numerology wisdom.">
   <meta name="author" content="Himangshu">
-  <meta name="robots" content="index, follow">
-  <title>Free Vedic Numerology Calculator | Moolank, Bhagyank, Mahadasha &amp; Antardasha</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <title>Vedic Numerology Suite | Complete Chart + 20-Year Grids</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      background: linear-gradient(145deg, #f0ede8 0%, #e3dad0 100%);
+      background: linear-gradient(145deg, #e8e0d5 0%, #d6ccbf 100%);
       font-family: 'Inter', sans-serif;
       padding: 1.5rem;
       min-height: 100vh;
     }
-    .dashboard {
-      max-width: 1400px;
+
+    /* Main unified container */
+    .vedic-super-app {
+      max-width: 1600px;
       margin: 0 auto;
-      background: #fffef9;
+      background: #fffef7;
       border-radius: 2rem;
-      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.25);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
       overflow: hidden;
     }
-    .hero {
-      background: #1f2a3e;
-      padding: 1.8rem 2rem;
+
+    /* Hero with spiritual gradient */
+    .hero-unified {
+      background: linear-gradient(135deg, #1f2a3e 0%, #2c3a4f 50%, #1a2538 100%);
+      padding: 2rem 2rem;
       text-align: center;
+      position: relative;
     }
-    .hero h1 {
-      font-weight: 700;
+    .hero-unified::before {
+      content: '🕉️';
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.06;
+      right: 0px;
+      top: -10px;
+      font-weight: 800;
+      pointer-events: none;
+    }
+    .hero-unified h1 {
+      font-weight: 800;
       font-size: 1.9rem;
       background: linear-gradient(135deg, #F9E0A0, #D4AF6A);
       -webkit-background-clip: text;
@@ -39,20 +54,38 @@
       color: transparent;
       margin-bottom: 0.3rem;
     }
-    .hero p { font-size: 0.85rem; opacity: 0.8; color: #ddd; }
-    .input-card {
+    .hero-unified p {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      color: #ddd9ce;
+    }
+
+    /* Input bar */
+    .input-bar {
       background: white;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid #ece2d6;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid #e8ddce;
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
       gap: 1rem;
       justify-content: space-between;
     }
-    .dob-group { display: flex; flex-direction: column; gap: 0.4rem; flex: 2; }
-    .dob-group label { font-weight: 600; font-size: 0.8rem; color: #6b5a42; }
-    .dob-group input {
+    .dob-field {
+      flex: 2;
+      min-width: 200px;
+    }
+    .dob-field label {
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: #7c5e3a;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .dob-field input {
+      width: 100%;
       padding: 0.8rem 1rem;
       border: 1.5px solid #e2d6c5;
       border-radius: 1.5rem;
@@ -61,50 +94,105 @@
       transition: 0.2s;
       outline: none;
     }
-    .dob-group input:focus { border-color: #c6a15b; box-shadow: 0 0 0 3px rgba(198,161,91,0.2); }
-    .btn-calc {
-      background: #7c5e3a;
+    .dob-field input:focus { border-color: #c6a15b; box-shadow: 0 0 0 3px rgba(198,161,91,0.2); }
+    .btn-primary {
+      background: linear-gradient(135deg, #7c5e3a, #9b7b54);
       border: none;
-      padding: 0.8rem 1.8rem;
+      padding: 0.8rem 2rem;
       border-radius: 2rem;
-      font-weight: 600;
+      font-weight: 700;
       color: white;
       cursor: pointer;
-      font-size: 0.95rem;
       transition: 0.2s;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .btn-calc:hover { background: #5e452b; transform: translateY(-2px); }
-    .root-destiny {
+    .btn-primary:hover { transform: translateY(-2px); background: #5e452b; box-shadow: 0 8px 18px rgba(94,69,43,0.3); }
+
+    /* Moolank Bhagyank quick stats */
+    .quick-stats {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       padding: 1rem 2rem;
       background: #fef8f0;
-      border-bottom: 1px solid #f0e4d4;
+      border-bottom: 1px solid #efe3d4;
       flex-wrap: wrap;
     }
-    .stat-card {
+    .stat-block {
       background: white;
       border-radius: 1.5rem;
-      padding: 0.5rem 1.2rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 0.5rem 1.5rem;
       flex: 1;
       text-align: center;
       min-width: 140px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
-    .stat-label { font-size: 0.7rem; text-transform: uppercase; color: #b48b48; font-weight: 700; }
-    .stat-value { font-size: 2rem; font-weight: 800; color: #2c2e3a; }
-    .planet-tag { font-size: 0.8rem; color: #a57c44; }
+    .stat-label-sm {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #b48b48;
+      font-weight: 700;
+    }
+    .stat-digit {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2c2e3a;
+    }
+
+    /* Tab Navigation */
+    .tabs-nav {
+      display: flex;
+      gap: 0;
+      background: #f4efea;
+      border-bottom: 1px solid #e5d9cc;
+      padding: 0 2rem;
+    }
+    .tab-btn {
+      padding: 1rem 1.8rem;
+      font-weight: 700;
+      background: transparent;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #6b5a42;
+      font-family: 'Inter', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 1.2rem 1.2rem 0 0;
+    }
+    .tab-btn i { font-size: 1rem; }
+    .tab-btn.active {
+      background: white;
+      color: #7c5e3a;
+      border-bottom: 3px solid #c6a15b;
+      margin-bottom: -1px;
+    }
+    .tab-content {
+      display: none;
+      background: white;
+      padding: 2rem;
+      animation: fade 0.25s ease;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Full Classic Report Styles (from first code) */
     .two-columns {
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid #efe3d4;
+      margin-bottom: 1.5rem;
     }
     .grid-panel { flex: 1.2; min-width: 280px; background: #fefcf7; border-radius: 1.5rem; padding: 0.8rem; }
     .dasha-panel { flex: 2.5; min-width: 300px; }
     .section-title { font-size: 1.2rem; font-weight: 700; padding: 0.5rem 0 1rem; color: #3d3522; display: flex; align-items: center; gap: 8px; }
-    .vedic-grid {
+    .vedic-grid-classic {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       background-color: #e7ddcd;
@@ -114,7 +202,7 @@
       max-width: 320px;
       margin: 0 auto;
     }
-    .grid-cell {
+    .grid-cell-classic {
       background: white;
       aspect-ratio: 1 / 1;
       display: flex;
@@ -124,8 +212,8 @@
       border-right: 2px solid #e7ddcd;
       border-bottom: 2px solid #e7ddcd;
     }
-    .grid-cell:nth-child(3n) { border-right: none; }
-    .grid-cell:nth-child(n+7) { border-bottom: none; }
+    .grid-cell-classic:nth-child(3n) { border-right: none; }
+    .grid-cell-classic:nth-child(n+7) { border-bottom: none; }
     .fixed-digit {
       font-size: 1.5rem;
       font-weight: 800;
@@ -140,148 +228,205 @@
       margin-bottom: 6px;
     }
     .number-badge { font-size: 0.9rem; font-weight: 700; background: #2c2e3a; color: #f9e0a0; border-radius: 40px; padding: 0.2rem 0.7rem; }
-    .empty-grid-note { font-size: 0.7rem; color: #bfae93; }
     .table-wrapper { overflow-x: auto; margin-top: 0.5rem; }
     .dasha-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; border-radius: 1rem; overflow: hidden; }
-    .dasha-table th { background: #e7ddcd; color: #2c2e3a; padding: 8px 6px; font-weight: 700; }
+    .dasha-table th { background: #e7ddcd; color: #2c2e3a; padding: 8px 6px; }
     .dasha-table td { background: white; padding: 7px 6px; text-align: center; border-bottom: 1px solid #f0e5d8; }
-    .planet-badge { background: #2c2e3a; color: #f9e0a0; border-radius: 30px; padding: 2px 8px; font-weight: 600; font-size: 0.7rem; display: inline-block; }
-    .info-note { background: #f9f3e9; margin: 1rem 2rem 0.5rem; padding: 0.7rem 1.2rem; border-radius: 1.2rem; font-size: 0.72rem; color: #6f5e44; border-left: 4px solid #dbb879; }
-    .article-section { padding: 2rem 2rem 1rem; background: #ffffff; border-top: 1px solid #efe3d4; }
-    .article-section h2 { font-size: 1.6rem; color: #3d3522; margin-bottom: 1rem; font-weight: 700; }
-    .article-section h3 { font-size: 1.2rem; margin: 1.2rem 0 0.6rem; color: #5e452b; }
-    .article-section p { line-height: 1.6; color: #4a4136; margin-bottom: 1rem; font-size: 0.95rem; }
-    .article-section ul, .article-section ol { margin: 0.8rem 0 1rem 1.8rem; color: #4a4136; line-height: 1.6; }
-    .footer-design { text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #b6a17e; border-top: 1px solid #efe3d4; background: #fefcf7; }
-    @media (max-width: 850px) { .two-columns { flex-direction: column; } .article-section { padding: 1.5rem; } .article-section h2 { font-size: 1.3rem; } }
+    .planet-badge-sm { background: #2c2e3a; color: #f9e0a0; border-radius: 30px; padding: 2px 8px; font-weight: 600; font-size: 0.7rem; display: inline-block; }
+    .info-note { background: #f9f3e9; margin-top: 0.5rem; padding: 0.7rem 1.2rem; border-radius: 1.2rem; font-size: 0.72rem; color: #6f5e44; }
+
+    /* 20-Grids style (second app) */
+    .twenty-grids {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .grid-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f0e8ff;
+      transition: transform 0.2s;
+    }
+    .grid-card:hover { transform: translateY(-4px); }
+    .grid-card.current { border: 3px solid #f59e0b; }
+    .card-header {
+      background: linear-gradient(135deg, #2c3a4f, #1f2a3e);
+      color: white;
+      padding: 0.7rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background-color: #1e1b4b;
+      margin: 1rem;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .mini-cell {
+      background: white;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #e9d5ff;
+      border-bottom: 1px solid #e9d5ff;
+    }
+    .mini-cell:nth-child(3n) { border-right: none; }
+    .mini-cell:nth-child(n+7) { border-bottom: none; }
+    .cell-digit {
+      font-size: 1.2rem;
+      font-weight: 800;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-bottom: 3px;
+    }
+    .digit-mahadasha { background: #fee2e2; color: #dc2626; }
+    .digit-antardasha { background: #d1fae5; color: #059669; }
+    .digit-both { background: linear-gradient(135deg, #fee2e2, #d1fae5); color: #4c1d95; font-weight: 900; }
+    .digit-normal { background: #f3e8ff; color: #7e22ce; }
+    .cell-count {
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      border-radius: 20px;
+    }
+    .count-maha { background: #fee2e2; color: #dc2626; }
+    .count-antar { background: #d1fae5; color: #059669; }
+    .dasha-footer {
+      padding: 0.5rem 1rem;
+      background: #faf5ff;
+      margin: 0 1rem 1rem;
+      border-radius: 0.8rem;
+      font-size: 0.7rem;
+    }
+    .badge-red-sm { background: #dc2626; color: white; padding: 0.2rem 0.7rem; border-radius: 30px; }
+    .badge-green-sm { background: #059669; color: white; padding: 0.2rem 0.7rem; border-radius: 30px; }
+
+    .footer-unified {
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.75rem;
+      color: #b6a17e;
+      background: #fefcf7;
+      border-top: 1px solid #efe3d4;
+    }
+    @media (max-width: 800px) {
+      .tab-btn { padding: 0.8rem 1rem; font-size: 0.8rem; }
+      .tab-content { padding: 1rem; }
+    }
   </style>
 </head>
 <body>
 
-<div class="dashboard">
-  <div class="hero">
-    <h1>✨ Free Vedic Numerology Calculator</h1>
-    <p>Moolank · Bhagyank · Vedic Grid · Mahadasha &amp; Antardasha (Year‑based)</p>
+<div class="vedic-super-app">
+  <div class="hero-unified">
+    <h1><i class="fas fa-chakra"></i> Vedic Numerology Suite</h1>
+    <p>Complete Chart | Mahadasha & Antardasha | 20‑Year Grid Forecast</p>
   </div>
 
-  <div class="input-card">
-    <div class="dob-group">
-      <label>📅 Enter Your Date of Birth</label>
-      <input type="date" id="dobInput" value="1950-09-17">
+  <div class="input-bar">
+    <div class="dob-field">
+      <label><i class="fas fa-calendar-alt"></i> DATE OF BIRTH</label>
+      <input type="date" id="globalDob" value="1990-05-15">
     </div>
-    <button class="btn-calc" id="calculateBtn">🔮 Generate Report</button>
+    <button class="btn-primary" id="globalRefreshBtn"><i class="fas fa-sync-alt"></i> Update All Insights</button>
   </div>
 
-  <div id="rootDestinyArea" class="root-destiny">
-    <div class="stat-card"><div class="stat-label">🌙 MOOLANK (Root Number)</div><div class="stat-value" id="rootNum">—</div><div class="planet-tag" id="rootPlanet"></div></div>
-    <div class="stat-card"><div class="stat-label">🌟 BHAGYANK (Destiny Number)</div><div class="stat-value" id="destinyNum">—</div><div class="planet-tag" id="destinyPlanet"></div></div>
+  <div class="quick-stats" id="quickStatsArea">
+    <div class="stat-block"><div class="stat-label-sm">🌙 MOOLANK (Root)</div><div class="stat-digit" id="statRoot">—</div><div id="statRootPlanet" style="font-size:0.7rem; color:#a57c44;"></div></div>
+    <div class="stat-block"><div class="stat-label-sm">🌟 BHAGYANK (Destiny)</div><div class="stat-digit" id="statDestiny">—</div><div id="statDestPlanet" style="font-size:0.7rem; color:#a57c44;"></div></div>
   </div>
 
-  <div class="two-columns">
-    <div class="grid-panel">
-      <div class="section-title">🕉️ Vedic Numerological Grid</div>
-      <div id="vedicGridRoot" class="vedic-grid"></div>
-      <div class="info-note" style="margin: 1rem 0 0; padding: 0.5rem;">
-        ⚡ Digits: DD + MM + YY(last2) + Moolank + Bhagyank. Zero ignored.
+  <div class="tabs-nav">
+    <button class="tab-btn active" data-tab="classic"><i class="fas fa-chart-pie"></i> Full Chart & Dashas</button>
+    <button class="tab-btn" data-tab="twentygrids"><i class="fas fa-th-large"></i> 20‑Year Grids (Past10+Next10)</button>
+  </div>
+
+  <!-- TAB 1: Classic Report (Mahadasha table + Antardasha table + Vedic Grid) -->
+  <div id="classicTab" class="tab-content active">
+    <div class="two-columns">
+      <div class="grid-panel">
+        <div class="section-title"><i class="fas fa-border-all"></i> 🕉️ Vedic Grid</div>
+        <div id="classicGridContainer" class="vedic-grid-classic"></div>
+        <div class="info-note">⚡ Digits: DD + MM + YY(last2) + Moolank + Bhagyank. Zero ignored.</div>
+      </div>
+      <div class="dasha-panel">
+        <div class="section-title"><i class="fas fa-chart-line"></i> 🪐 Mahadasha Cycle (100 years)</div>
+        <div class="table-wrapper"><table class="dasha-table" id="mahadashaTable"><thead><tr><th>#</th><th>Planet</th><th>Num</th><th>Start</th><th>End</th><th>Years</th></tr></thead><tbody id="mahadashaBody"></tbody></table></div>
       </div>
     </div>
-    <div class="dasha-panel">
-      <div class="section-title">🪐 Mahadasha Cycle (100 years)</div>
-      <div class="table-wrapper">
-        <table class="dasha-table" id="mahadashaTable">
-          <thead><tr><th>#</th><th>Planet</th><th>Number</th><th>Start Date</th><th>End Date</th><th>Years</th></tr></thead>
-          <tbody id="mahadashaBody"></tbody>
-        </table>
-      </div>
-    </div>
+    <div class="section-title" style="padding: 0 0 0.5rem 0;"><i class="fas fa-calendar-week"></i> 📆 Yearly Antardasha (Year Number = last two digits)</div>
+    <div class="table-wrapper"><table class="dasha-table" id="antardashaTable"><thead><tr><th>Year</th><th>Year#</th><th>Root#</th><th>Month#</th><th>Day#(DoW)</th><th>Sum→Root</th><th>Antardasha Planet</th></tr></thead><tbody id="antardashaBody"></tbody></table></div>
+    <div class="info-note" style="margin-top: 1rem;">✨ Year Number = last two digits of calendar year. Formula: Year# + Root + BirthMonth + WeekdayNumber → reduces to single digit planet.</div>
   </div>
 
-  <!-- Antardasha: Year number is last two digits of calendar year (e.g., 2018 → 18) -->
-  <div class="section-title" style="padding: 0.5rem 2rem 0;">📆 Yearly Antardasha (based on calendar year last-two-digits)</div>
-  <div class="table-wrapper" style="padding: 0 2rem 1rem;">
-    <table class="dasha-table" id="antardashaTable">
-      <thead>
-        <tr>
-          <th>Calendar Year</th>
-          <th>Year Number<br>(last two digits)</th>
-          <th>Root#</th>
-          <th>Month#</th>
-          <th>Day#(DoW)</th>
-          <th>Sum → Root</th>
-          <th>Antardasha Planet</th>
-        </tr>
-      </thead>
-      <tbody id="antardashaBody"></tbody>
-    </table>
+  <!-- TAB 2: 20-Year Grids (Past 10 years + Next 10 years) -->
+  <div id="twentygridsTab" class="tab-content">
+    <div class="section-title"><i class="fas fa-th"></i> 📅 20-Year Vedic Grids (Past 10 → Next 10 Years)</div>
+    <div id="twentyGridsContainer" class="twenty-grids"></div>
+    <div class="info-note" style="margin-top: 1rem;"><i class="fas fa-info-circle"></i> 🔴 Red = Mahadasha Number, 🟢 Green = Antardasha Number. Each cell shows digit and repetitions.</div>
   </div>
 
-  <div class="article-section">
-    <h2>Understanding Vedic Numerology: A Complete Guide</h2>
-    <p><strong>Vedic Numerology</strong>, also known as Indian numerology, is an ancient system derived from the Vedas. It assigns numerical values to birth dates to reveal personality traits, life purpose, and karmic patterns. The Vedic system focuses heavily on the <strong>Moolank (Root Number)</strong> and <strong>Bhagyank (Destiny Number)</strong> calculated from your date of birth.</p>
-    <h3>🌙 What is Moolank (Root Number)?</h3>
-    <p>Your Moolank is the single-digit sum of your day of birth. For example, born on the 23rd → 2+3=5. This represents your innate nature, mental tendencies, and how others perceive you.</p>
-    <h3>🌟 Bhagyank (Destiny Number)</h3>
-    <p>Bhagyank is calculated by summing all digits of your full date of birth (DD+MM+YYYY) and reducing to a single digit. This reveals your life path and major life events.</p>
-    <h3>🕉️ The Sacred Vedic Grid (3x3 Chakra)</h3>
-    <p>The Vedic grid is a 3x3 mystical square with fixed positions: top row (3,1,9), middle row (6,7,5), bottom row (2,8,4). By mapping digits from your birth date plus Moolank and Bhagyank, we create a personalized energetic map.</p>
-    <h3>🪐 Mahadasha &amp; Antardasha: Planetary Periods</h3>
-    <p><strong>Mahadasha</strong> cycles start from your Moolank following the order: 1(Sun),2(Moon),3(Jupiter),4(Rahu),5(Mercury),6(Venus),7(Ketu),8(Saturn),9(Mars). Each lasts for years equal to its number.</p>
-    <p><strong>Antardasha (Corrected Method):</strong> For each calendar year after birth, we take the <strong>Year Number = last two digits of the year</strong> (e.g., 2018 → 18, 2025 → 25). Then add: <em>YearNumber + Root Number + Birth Month Number + Day-of-Week Number</em> (where Monday=2, Tuesday=9, Wednesday=5, Thursday=3, Friday=6, Saturday=8, Sunday=1). Reduce the sum to a single digit to get the Antardasha planet for that year.</p>
-    <p><em>Example (Narendra Modi, 17/09/1950): For calendar year 2018 → Year Number 18 + Root(8) + Month(9) + Day(2 for Monday) = 37 → 1 → Sun.</em></p>
-    <div class="footer-design" style="margin-top: 1.5rem;">✨ Design &amp; Developed by Himangshu | Free Vedic Numerology Tool | Ancient Wisdom for Modern Souls</div>
+  <div class="footer-unified">
+    <i class="fas fa-chart-line"></i> Developed by Himangshu | Vedic Wisdom | Mahadasha based on root number | Antardasha using Year-LastTwoDigits method
   </div>
 </div>
 
 <script>
-  // Planet mapping 1-9
+  // ----------------------------------------------
+  // Shared Utilities
+  // ----------------------------------------------
   const planetMap = {
-    1: { name: "Sun", years: 1 },
-    2: { name: "Moon", years: 2 },
-    3: { name: "Jupiter", years: 3 },
-    4: { name: "Rahu", years: 4 },
-    5: { name: "Mercury", years: 5 },
-    6: { name: "Venus", years: 6 },
-    7: { name: "Ketu", years: 7 },
-    8: { name: "Saturn", years: 8 },
-    9: { name: "Mars", years: 9 }
+    1: { name: "Sun", years: 1, symbol: "☀️" },
+    2: { name: "Moon", years: 2, symbol: "🌙" },
+    3: { name: "Jupiter", years: 3, symbol: "🪐" },
+    4: { name: "Rahu", years: 4, symbol: "🐉" },
+    5: { name: "Mercury", years: 5, symbol: "☿" },
+    6: { name: "Venus", years: 6, symbol: "♀" },
+    7: { name: "Ketu", years: 7, symbol: "🐍" },
+    8: { name: "Saturn", years: 8, symbol: "♄" },
+    9: { name: "Mars", years: 9, symbol: "♂" }
   };
-
-  // Day of week number mapping (Monday=2, Tuesday=9, Wednesday=5, Thursday=3, Friday=6, Saturday=8, Sunday=1)
-  function getDayNumber(jsDate) {
-    const day = jsDate.getDay(); // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
-    const map = { 0:1, 1:2, 2:9, 3:5, 4:3, 5:6, 6:8 };
-    return map[day];
-  }
 
   function reduceToSingleDigit(n) {
     let num = Math.abs(n);
     while (num > 9) {
       let sum = 0;
-      while (num > 0) {
-        sum += num % 10;
-        num = Math.floor(num / 10);
-      }
+      while (num > 0) { sum += num % 10; num = Math.floor(num / 10); }
       num = sum;
     }
     return num === 0 ? 0 : num;
   }
 
-  function computeRootNumber(day) {
-    let sum = 0;
-    for (let ch of day.toString()) sum += parseInt(ch);
-    return reduceToSingleDigit(sum);
+  function computeRootNumber(day) { 
+    let s = 0; for(let ch of day.toString()) s += parseInt(ch); return reduceToSingleDigit(s);
   }
-
   function computeDestinyNumber(day, month, year) {
     let total = 0;
-    for (let ch of day.toString()) total += parseInt(ch);
-    for (let ch of month.toString()) total += parseInt(ch);
-    for (let ch of year.toString()) total += parseInt(ch);
+    for(let ch of day.toString()) total += parseInt(ch);
+    for(let ch of month.toString()) total += parseInt(ch);
+    for(let ch of year.toString()) total += parseInt(ch);
     return reduceToSingleDigit(total);
   }
 
-  // Vedic Grid Logic (fixed 3x3 positions)
-  const VEDIC_LAYOUT = [3, 1, 9, 6, 7, 5, 2, 8, 4];
+  function getDayNumber(jsDate) {
+    const day = jsDate.getDay();
+    const map = { 0:1, 1:2, 2:9, 3:5, 4:3, 5:6, 6:8 };
+    return map[day];
+  }
+
+  // Classic Grid Logic (3x3 fixed layout)
+  const VEDIC_LAYOUT = [3,1,9,6,7,5,2,8,4];
   function collectGridDigits(day, month, year, moolank, bhagyank) {
     const dayDigits = day.toString().split('').map(ch => parseInt(ch));
     const monthDigits = month.toString().split('').map(ch => parseInt(ch));
@@ -290,60 +435,43 @@
     let all = [...dayDigits, ...monthDigits, ...lastTwo, ...extra];
     return all.filter(d => d >= 1 && d <= 9);
   }
-
-  function renderVedicGrid(freqMap) {
-    const container = document.getElementById('vedicGridRoot');
-    if (!container) return;
+  function renderClassicGrid(freqMap, containerId) {
+    const container = document.getElementById(containerId);
+    if(!container) return;
     container.innerHTML = '';
-    for (let digit of VEDIC_LAYOUT) {
+    for(let digit of VEDIC_LAYOUT) {
       const count = freqMap[digit] || 0;
-      const cell = document.createElement('div');
-      cell.className = 'grid-cell';
-      const fixedSpan = document.createElement('div');
-      fixedSpan.className = 'fixed-digit';
-      fixedSpan.textContent = digit;
+      const cell = document.createElement('div'); cell.className = 'grid-cell-classic';
+      const fixedSpan = document.createElement('div'); fixedSpan.className = 'fixed-digit'; fixedSpan.textContent = digit;
       cell.appendChild(fixedSpan);
-      if (count > 0) {
-        const badge = document.createElement('span');
-        badge.className = 'number-badge';
+      if(count > 0) {
+        const badge = document.createElement('span'); badge.className = 'number-badge';
         badge.textContent = String(digit).repeat(count);
         cell.appendChild(badge);
       } else {
-        const empty = document.createElement('span');
-        empty.className = 'empty-grid-note';
-        empty.textContent = '—';
+        const empty = document.createElement('span'); empty.className = 'empty-grid-note'; empty.textContent = '—';
         cell.appendChild(empty);
       }
       container.appendChild(cell);
     }
   }
 
-  // Mahadasha: starts from root number, cycles 1..9 infinitely
+  // Mahadasha sequence (100 yrs)
   function generateMahadasha(startNumber, birthDate, maxYears = 100) {
-    let sequence = [];
-    let currentDate = new Date(birthDate);
-    let totalYears = 0;
+    let sequence = [], currentDate = new Date(birthDate), totalYears = 0;
     let order = [];
-    for (let i = startNumber; i <= 9; i++) order.push(i);
-    for (let i = 1; i < startNumber; i++) order.push(i);
+    for(let i=startNumber; i<=9; i++) order.push(i);
+    for(let i=1; i<startNumber; i++) order.push(i);
     let idx = 0;
-    while (totalYears < maxYears) {
+    while(totalYears < maxYears) {
       const num = order[idx % order.length];
       const planet = planetMap[num];
-      if (!planet) break;
       let duration = planet.years;
-      if (totalYears + duration > maxYears) duration = maxYears - totalYears;
+      if(totalYears + duration > maxYears) duration = maxYears - totalYears;
       const start = new Date(currentDate);
-      const end = new Date(currentDate);
-      end.setFullYear(end.getFullYear() + duration);
-      sequence.push({
-        index: sequence.length + 1,
-        number: num,
-        planet: planet.name,
-        duration: duration,
-        startStr: start.toLocaleDateString('en-GB'),
-        endStr: end.toLocaleDateString('en-GB')
-      });
+      const end = new Date(currentDate); end.setFullYear(end.getFullYear() + duration);
+      sequence.push({ index: sequence.length+1, number: num, planet: planet.name, duration: duration,
+        startStr: start.toLocaleDateString('en-GB'), endStr: end.toLocaleDateString('en-GB') });
       currentDate = new Date(end);
       totalYears += duration;
       idx++;
@@ -351,131 +479,204 @@
     return sequence;
   }
 
-  // ---------- CORRECTED ANTARDASHA (User Specification) ----------
-  // For each calendar year after birth, we take:
-  // - Year Number = last two digits of the calendar year (e.g., 2018 → 18, 2025 → 25)
-  // - Root Number (Moolank)
-  // - Birth Month (1-12)
-  // - Day-of-Week Number (based on the actual weekday of that year's birthday)
-  // Sum these, reduce to single digit → Antardasha planet.
-  function generateAntardashaCorrected(birthDate, rootNumber, maxYears = 100) {
-    const birthYear = birthDate.getFullYear();
-    const birthMonth = birthDate.getMonth() + 1;
-    const birthDay = birthDate.getDate();
-    const results = [];
-    
-    // Start from the birth year itself, but typical calculation may start from birth year + something.
-    // According to example, for 1950 born, they calculated for 2018 (year 68th after birth).
-    // We'll generate from birthYear up to birthYear + maxYears - 1 (ensure we cover at least 100 years of life).
-    // But to be safe, we generate for 100 calendar years starting from birthYear.
-    for (let offset = 0; offset < maxYears; offset++) {
+  // Antardasha corrected (year number = last two digits)
+  function generateAntardashaCorrected(birthDate, rootNumber, maxYears = 80) {
+    const birthYear = birthDate.getFullYear(), birthMonth = birthDate.getMonth()+1, birthDay = birthDate.getDate();
+    let results = [];
+    for(let offset = 0; offset < maxYears; offset++) {
       const calendarYear = birthYear + offset;
-      // Year Number = last two digits of calendar year
       let yearNumber = calendarYear % 100;
-      
-      // Get the actual birthday date for that calendar year to find weekday
-      const birthdayDate = new Date(calendarYear, birthMonth - 1, birthDay);
-      // If the date is invalid (e.g., Feb 29 on non-leap year), we adjust to Feb 28 for calculation
-      let validBirthday = birthdayDate;
-      if (birthdayDate.getMonth() !== birthMonth - 1) {
-        // handle Feb 29 edge case: use Feb 28
-        validBirthday = new Date(calendarYear, 1, 28);
-      }
-      const dayOfWeekNumber = getDayNumber(validBirthday);
-      
-      // Sum: YearNumber + RootNumber + BirthMonth + DayOfWeekNumber
+      let birthdayDate = new Date(calendarYear, birthMonth-1, birthDay);
+      if(birthdayDate.getMonth() !== birthMonth-1) birthdayDate = new Date(calendarYear, 1, 28);
+      const dayOfWeekNumber = getDayNumber(birthdayDate);
       let rawSum = yearNumber + rootNumber + birthMonth + dayOfWeekNumber;
       let reduced = reduceToSingleDigit(rawSum);
-      const planet = planetMap[reduced]?.name || "Unknown";
-      
-      results.push({
-        calendarYear: calendarYear,
-        yearNumber: yearNumber,
-        rootVal: rootNumber,
-        monthVal: birthMonth,
-        dayVal: dayOfWeekNumber,
-        sumRaw: rawSum,
-        reduced: reduced,
-        planet: planet
-      });
+      results.push({ calendarYear, yearNumber, rootVal: rootNumber, monthVal: birthMonth, dayVal: dayOfWeekNumber, sumRaw: rawSum, reduced, planet: planetMap[reduced]?.name || "Unknown" });
     }
     return results;
   }
 
-  // Helper for displaying weekday name for reference
-  function getWeekdayFromNum(num) {
-    const map = {1:"Sun",2:"Mon",9:"Tue",5:"Wed",3:"Thu",6:"Fri",8:"Sat"};
-    return map[num] || "—";
-  }
-
-  // Main update function
-  function updateAll(dobStr) {
-    const dob = new Date(dobStr);
-    if (isNaN(dob.getTime())) {
-      alert("Please enter a valid date");
-      return;
-    }
-    const day = dob.getDate();
-    const month = dob.getMonth() + 1;
-    const year = dob.getFullYear();
-
+  // Update Classic Tab (full report)
+  function updateClassicTab(dob) {
+    const day = dob.getDate(), month = dob.getMonth()+1, year = dob.getFullYear();
     const root = computeRootNumber(day);
     const destiny = computeDestinyNumber(day, month, year);
+    // update stats area globally
+    document.getElementById('statRoot').innerText = root;
+    document.getElementById('statDestiny').innerText = destiny;
+    document.getElementById('statRootPlanet').innerHTML = planetMap[root]?.name || '—';
+    document.getElementById('statDestPlanet').innerHTML = planetMap[destiny]?.name || '—';
 
-    document.getElementById('rootNum').innerText = root;
-    document.getElementById('destinyNum').innerText = destiny;
-    document.getElementById('rootPlanet').innerHTML = planetMap[root]?.name || "—";
-    document.getElementById('destinyPlanet').innerHTML = planetMap[destiny]?.name || "—";
+    const digitsFreq = new Array(10).fill(0);
+    const gridDigits = collectGridDigits(day, month, year, root, destiny);
+    for(let d of gridDigits) digitsFreq[d]++;
+    renderClassicGrid(digitsFreq, 'classicGridContainer');
 
-    // Vedic Grid
-    const digits = collectGridDigits(day, month, year, root, destiny);
-    const freq = new Array(10).fill(0);
-    for (let d of digits) freq[d]++;
-    renderVedicGrid(freq);
-
-    // Mahadasha
     const mahaSeq = generateMahadasha(root, dob, 100);
     const mBody = document.getElementById('mahadashaBody');
     mBody.innerHTML = '';
-    for (let m of mahaSeq) {
-      mBody.innerHTML += `<tr>
-        <td>${m.index}</td>
-        <td><span class="planet-badge">${m.planet}</span> (${m.number})</td>
-        <td>${m.number}</td>
-        <td>${m.startStr}</td>
-        <td>${m.endStr}</td>
-        <td>${m.duration} yrs</td>
-      </tr>`;
+    for(let m of mahaSeq) {
+      mBody.innerHTML += `<tr><td>${m.index}</td><td><span class="planet-badge-sm">${m.planet} (${m.number})</span></td><td>${m.number}</td><td>${m.startStr}</td><td>${m.endStr}</td><td>${m.duration} yrs</td></tr>`;
     }
 
-    // Antardasha (corrected method: YearNumber = last two digits of calendar year)
-    const antarSeq = generateAntardashaCorrected(dob, root, 100);
+    const antarSeq = generateAntardashaCorrected(dob, root, 80);
     const aBody = document.getElementById('antardashaBody');
     aBody.innerHTML = '';
-    for (let a of antarSeq) {
-      const weekdayName = getWeekdayFromNum(a.dayVal);
-      aBody.innerHTML += `<tr>
-        <td><strong>${a.calendarYear}</strong></td>
-        <td>${a.yearNumber}</td>
-        <td>${a.rootVal}</td>
-        <td>${a.monthVal}</td>
-        <td>${a.dayVal} (${weekdayName})</td>
-        <td>${a.sumRaw} → ${a.reduced}</td>
-        <td><strong style="color:#9b6e3e;">${a.planet}</strong></td>
-      </tr>`;
+    for(let a of antarSeq.slice(0, 50)) { // show 50 years for readability
+      const weekdayMap = {1:"Sun",2:"Mon",9:"Tue",5:"Wed",3:"Thu",6:"Fri",8:"Sat"};
+      const weekdayName = weekdayMap[a.dayVal] || '—';
+      aBody.innerHTML += `<tr><td>${a.calendarYear}</td><td>${a.yearNumber}</td><td>${a.rootVal}</td><td>${a.monthVal}</td><td>${a.dayVal} (${weekdayName})</td><td>${a.sumRaw} → ${a.reduced}</td><td><strong>${a.planet}</strong></td></tr>`;
     }
   }
 
-  // Event Listeners & Initial Load
-  document.getElementById('calculateBtn').addEventListener('click', () => {
-    const val = document.getElementById('dobInput').value;
-    if (val) updateAll(val);
+  // --------- 20-Grids Logic (second app fully integrated) ----------
+  function getMahadashaForYear(targetYear, birthDate, rootNumber) {
+    const birthYear = birthDate.getFullYear(), birthMonth = birthDate.getMonth(), birthDay = birthDate.getDate();
+    let order = [];
+    for(let i=rootNumber; i<=9; i++) order.push(i);
+    for(let i=1; i<rootNumber; i++) order.push(i);
+    let currentDate = new Date(birthYear, birthMonth, birthDay);
+    let idx = 0;
+    while(true) {
+      const planetNum = order[idx % order.length];
+      const planet = planetMap[planetNum];
+      const periodEnd = new Date(currentDate);
+      periodEnd.setFullYear(periodEnd.getFullYear() + planet.years);
+      const startYear = currentDate.getFullYear(), endYear = periodEnd.getFullYear() - 1;
+      if(targetYear >= startYear && targetYear <= endYear) return { planetName: planet.name, planetNumber: planetNum };
+      currentDate = periodEnd;
+      idx++;
+      if(idx > 200) break;
+    }
+    return { planetName: "Unknown", planetNumber: 0 };
+  }
+
+  function getAntardashaForYear(calendarYear, birthDate, rootNumber) {
+    const birthMonth = birthDate.getMonth()+1, birthDay = birthDate.getDate();
+    const yearNumber = calendarYear % 100;
+    let birthdayDate = new Date(calendarYear, birthMonth-1, birthDay);
+    if(birthdayDate.getMonth() !== birthMonth-1) birthdayDate = new Date(calendarYear, 1, 28);
+    const dayOfWeekNumber = getDayNumber(birthdayDate);
+    const rawSum = yearNumber + rootNumber + birthMonth + dayOfWeekNumber;
+    const reduced = reduceToSingleDigit(rawSum);
+    return { planetNumber: reduced, rawSum, dayNum: dayOfWeekNumber };
+  }
+
+  function getBaseFreq(birthDate, rootNumber, destinyNumber) {
+    const day = birthDate.getDate(), month = birthDate.getMonth()+1, year = birthDate.getFullYear();
+    const dayDigits = day.toString().split('').map(ch=>parseInt(ch));
+    const monthDigits = month.toString().split('').map(ch=>parseInt(ch));
+    const lastTwo = year.toString().slice(-2).split('').map(ch=>parseInt(ch));
+    const extra = [rootNumber, destinyNumber];
+    let all = [...dayDigits, ...monthDigits, ...lastTwo, ...extra];
+    const filtered = all.filter(d => d>=1 && d<=9);
+    const freq = new Array(10).fill(0);
+    for(let d of filtered) freq[d]++;
+    return freq;
+  }
+
+  function generateGridCellsForYear(year, birthDate, rootNumber, destinyNumber, mahadashaNum, antardashaNum) {
+    const baseFreq = getBaseFreq(birthDate, rootNumber, destinyNumber);
+    const finalFreq = [...baseFreq];
+    finalFreq[mahadashaNum]++;
+    finalFreq[antardashaNum]++;
+    const cells = [];
+    for(let digit of VEDIC_LAYOUT) {
+      const count = finalFreq[digit] || 0;
+      const hasMahadasha = (mahadashaNum === digit);
+      const hasAntardasha = (antardashaNum === digit);
+      let displayText = '';
+      let cellClass = '';
+      let countClass = '';
+      if(count > 0) {
+        displayText = String(digit).repeat(count);
+        if(hasMahadasha && hasAntardasha) { cellClass = 'digit-both'; countClass = 'count-both'; }
+        else if(hasMahadasha) { cellClass = 'digit-mahadasha'; countClass = 'count-maha'; }
+        else if(hasAntardasha) { cellClass = 'digit-antardasha'; countClass = 'count-antar'; }
+        else { cellClass = 'digit-normal'; countClass = 'count-normal'; }
+      } else { cellClass = 'digit-normal'; countClass = 'count-normal'; }
+      cells.push({ digit, count, displayText, cellClass, countClass });
+    }
+    return cells;
+  }
+
+  function buildTwentyGrids(dob) {
+    const day = dob.getDate(), month = dob.getMonth()+1, year = dob.getFullYear();
+    const root = computeRootNumber(day);
+    const destiny = computeDestinyNumber(day, month, year);
+    // update stats sync again
+    document.getElementById('statRoot').innerText = root;
+    document.getElementById('statDestiny').innerText = destiny;
+    document.getElementById('statRootPlanet').innerHTML = planetMap[root]?.name || '—';
+    document.getElementById('statDestPlanet').innerHTML = planetMap[destiny]?.name || '—';
+
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const startYear = currentYear - 10;
+    const endYear = currentYear + 9;
+    const container = document.getElementById('twentyGridsContainer');
+    container.innerHTML = '';
+    for(let yr = startYear; yr <= endYear; yr++) {
+      const maha = getMahadashaForYear(yr, dob, root);
+      const antar = getAntardashaForYear(yr, dob, root);
+      const cells = generateGridCellsForYear(yr, dob, root, destiny, maha.planetNumber, antar.planetNumber);
+      const isCurrent = (yr === currentYear);
+      const card = document.createElement('div'); card.className = 'grid-card'; if(isCurrent) card.classList.add('current');
+      card.innerHTML = `<div class="card-header"><i class="fas fa-calendar"></i> ${yr} → ${yr+1} <span class="year-badge">Year# ${yr%100}</span> ${isCurrent ? '<i class="fas fa-star" style="color:#fbbf24"></i>' : ''}</div>`;
+      const gridDiv = document.createElement('div'); gridDiv.className = 'mini-grid';
+      for(let c of cells) {
+        const cellDiv = document.createElement('div'); cellDiv.className = 'mini-cell';
+        const digitSpan = document.createElement('div'); digitSpan.className = `cell-digit ${c.cellClass}`; digitSpan.textContent = c.digit;
+        cellDiv.appendChild(digitSpan);
+        if(c.count > 0) {
+          const countSpan = document.createElement('div'); countSpan.className = `cell-count ${c.countClass}`; countSpan.textContent = c.displayText;
+          cellDiv.appendChild(countSpan);
+        } else {
+          const emptySpan = document.createElement('div'); emptySpan.className = 'empty-badge'; emptySpan.textContent = '○';
+          cellDiv.appendChild(emptySpan);
+        }
+        gridDiv.appendChild(cellDiv);
+      }
+      card.appendChild(gridDiv);
+      const footerDiv = document.createElement('div'); footerDiv.className = 'dasha-footer';
+      footerDiv.innerHTML = `<div style="display:flex;justify-content:space-between;"><span><i class="fas fa-dragon"></i> Mahadasha:</span><span class="badge-red-sm">🔴 ${planetMap[maha.planetNumber]?.name || '?'} (${maha.planetNumber})</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:5px;"><span><i class="fas fa-feather-alt"></i> Antardasha:</span><span class="badge-green-sm">🟢 ${planetMap[antar.planetNumber]?.name || '?'} (${antar.planetNumber})</span></div>
+      <div class="formula-text" style="font-size:0.6rem; margin-top:6px;">📐 ${yr%100} + ${root} + ${month} + ${antar.dayNum} = ${antar.rawSum} → ${antar.planetNumber}</div>`;
+      card.appendChild(footerDiv);
+      container.appendChild(card);
+    }
+  }
+
+  function fullRefresh() {
+    const dobInput = document.getElementById('globalDob').value;
+    if(!dobInput) return;
+    const dob = new Date(dobInput);
+    if(isNaN(dob.getTime())) { alert("Valid date please"); return; }
+    updateClassicTab(dob);
+    buildTwentyGrids(dob);
+  }
+
+  // Tab switching
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = {
+    classic: document.getElementById('classicTab'),
+    twentygrids: document.getElementById('twentygridsTab')
+  };
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      Object.keys(contents).forEach(key => contents[key].classList.remove('active'));
+      if(tabId === 'classic') contents.classic.classList.add('active');
+      else if(tabId === 'twentygrids') contents.twentygrids.classList.add('active');
+    });
   });
-  document.getElementById('dobInput').addEventListener('change', (e) => updateAll(e.target.value));
-  
+
+  document.getElementById('globalRefreshBtn').addEventListener('click', fullRefresh);
+  document.getElementById('globalDob').addEventListener('change', fullRefresh);
   window.addEventListener('DOMContentLoaded', () => {
-    const defaultVal = document.getElementById('dobInput').value;
-    updateAll(defaultVal || '1950-09-17');
+    fullRefresh();
   });
 </script>
 </body>
