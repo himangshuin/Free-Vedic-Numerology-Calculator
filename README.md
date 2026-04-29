@@ -20,7 +20,7 @@ Unlike Western numerology systems, Vedic numerology focuses on:
 * Planetary rulership (Navagraha)
 * Dasha system (time cycles)
 
-👉 This calculator combines **numerology + astrology logic** to give deeper predictions.
+👉 This calculator combines **numerology + astrology logic** to give deeper predictions. https://himangshuin.github.io/Free-Vedic-Numerology-Calculator/
 
 ---
 
